@@ -5,14 +5,14 @@ import React, {
   useRef,
   useEffect,
 } from 'react'
-import './index.scss'
 import ReactDOM from 'react-dom'
+require('./assets/css/index.css')
 
 const Img = {
-  WARN: require('../assets/img/warn.png'),
-  SUCCESS: require('../assets/img/smile.png'),
-  ERROR: require('../assets/img/error.png'),
-  INFO: require('../assets/img/info.png'),
+  WARN: require('./assets/img/warn.png'),
+  SUCCESS: require('./assets/img/smile.png'),
+  ERROR: require('./assets/img/error.png'),
+  INFO: require('./assets/img/info.png'),
 }
 
 let timer: any
@@ -61,8 +61,8 @@ const SnackBarContainer: React.FC<SnackBarProps> = (
     align === 'bottom'
       ? { bottom: -40 }
       : align === 'top'
-      ? { top: -40 }
-      : { top: '50%', transform: 'translateY(-50%)' }
+        ? { top: -40 }
+        : { top: '50%', transform: 'translateY(-50%)' }
 
   const time = align === 'center' ? '300ms' : '500ms'
 
@@ -114,6 +114,7 @@ const SnackBarContainer: React.FC<SnackBarProps> = (
         height: 40,
         backgroundColor,
         borderRadius: 4,
+        boxSizing: 'border-box',
         boxShadow:
           '-6px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)',
       }}
@@ -128,24 +129,25 @@ const SnackBarContainer: React.FC<SnackBarProps> = (
   )
 }
 
-const SnackBar = forwardRef(SnackBarContainer as any)
+const SnackBar: any = forwardRef(SnackBarContainer as any)
 
 export default SnackBar
 
-export const useSnackBar = (force = false) => {
+export const useSnackBar = (props: SnackBarProps = { fontSize: 14, align: 'bottom' }, force = false) => {
+  const { fontSize, align }: any = props
   const ref: any = useRef(null)
   useEffect(() => {
     const style = getComputedStyle(document.body)
     console.warn(style.boxSizing)
     if (!force && style.boxSizing && style.boxSizing !== 'border-box') {
-      throw new Error('react-snack-bar: Body box-sizing is not border-box')
+      console.warn('react-snack-bar: box-sizing is not border-box, it may produce some problems')
     }
     const div = document.createElement('div')
     document.body.appendChild(div)
-    ReactDOM.render(<SnackBar ref={ref}></SnackBar>, div)
-    return () => {}
+    ReactDOM.render(<SnackBar ref={ref} align={align} fontSize={fontSize} ></SnackBar>, div)
+    return () => { }
   }, [])
   return {
-    show: (text: string, type: Type) => ref.current.show(text, type),
+    show: (text: string, type: Type = "ERROR") => ref.current && ref.current.show(text, type),
   }
 }
