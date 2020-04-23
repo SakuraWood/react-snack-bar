@@ -36,9 +36,22 @@ const App = () => {
 
 ## api
 
+### props
+
+```
+const props = {
+  fontSize: 14 ,   // font size of text , default is 14
+  align: 'bottom'  // position of snack bar in the screen , optional value: ['top','bottom','center'], default is 'bottom'
+}
+
+useSnackBar(props)
+
+```
+
 ### methods
 
 ```
 show : (text:string, type:'SUCCESS'|'WARN'|'INFO'|'ERROR'='ERROR')=> ...
 
 ```
+
