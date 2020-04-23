@@ -1,4 +1,4 @@
-# react-snack bar
+# react-snack-bar
 
 ## installation
 
