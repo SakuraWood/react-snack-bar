@@ -1,0 +1,54 @@
+@keyframes bottomsnackbaranimation {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-52px);
+  }
+}
+
+@keyframes bottomsnackbaranimationnoshow {
+  from {
+    transform: translateY(-52px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+
+@keyframes topsnackbaranimation {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(52px);
+  }
+}
+
+@keyframes topsnackbaranimationnoshow {
+  from {
+    transform: translateY(52px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes centersnackbaranimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes centersnackbaranimationnoshow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
