@@ -15,23 +15,19 @@ yarn add @sakurawood/react-snack-bar
 ## base usage
 
 ```javascript
-
 // example
 
-import {useSnackBar} from '@sakurawood/react-snack-bar'
-
+import { useSnackBar } from '@sakurawood/react-snack-bar';
 
 const App = () => {
-  const snackBar = useSnackBar()
-  snackBar.show('hello world', 'SUCCESS')
+  const snackBar = useSnackBar();
+  snackBar.show('hello world', 'SUCCESS');
   return (
     <div>
       <div />
     </div>
   );
 };
-
-
 ```
 
 ## api
@@ -41,7 +37,8 @@ const App = () => {
 ```
 const props = {
   fontSize: 14 ,   // font size of text , default is 14
-  align: 'bottom'  // position of snack bar in the screen , optional value: ['top','bottom','center'], default is 'bottom'
+  align: 'bottom', // position of snack bar in the screen , optional value: ['top','bottom','center'], default is 'bottom'
+  rtl: true        // right to left layout, default is false
 }
 
 useSnackBar(props)
@@ -54,4 +51,3 @@ useSnackBar(props)
 show : (text:string, type:'SUCCESS'|'WARN'|'INFO'|'ERROR'='ERROR')=> ...
 
 ```
-
