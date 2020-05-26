@@ -70,7 +70,6 @@ const SnackBarContainer: React.FC<SnackBarProps> = (props: SnackBarProps, ref) =
   }))
 
   const showSnackBar = () => {
-    console.log('show snack bar')
     setShow(true)
     clearTimeout(timer)
     timer = setTimeout(() => {
