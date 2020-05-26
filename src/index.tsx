@@ -40,6 +40,8 @@ const SnackBarContainer: React.FC<SnackBarProps> = (props: SnackBarProps, ref) =
 
   const [show, setShow] = useState(false)
 
+  const [render, setRender] = useState(false)
+
   const [backgroundColor, setBackgroundColor] = useState(Color.ERROR)
 
   const [color, setColor] = useState(FontColor.ERROR)
@@ -58,6 +60,7 @@ const SnackBarContainer: React.FC<SnackBarProps> = (props: SnackBarProps, ref) =
 
   useImperativeHandle(ref, () => ({
     show: (text: string, type: Type = 'ERROR') => {
+      setRender(true)
       setText(text)
       setBackgroundColor(Color[type])
       setColor(FontColor[type])
@@ -82,7 +85,7 @@ const SnackBarContainer: React.FC<SnackBarProps> = (props: SnackBarProps, ref) =
         ...(show ? transformStyle : transformStyleNoShow),
         zIndex: 9999,
         padding: 10,
-        display: 'flex',
+        display: render ? 'flex' : 'none',
         flexDirection: rtl ? 'row-reverse' : 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',

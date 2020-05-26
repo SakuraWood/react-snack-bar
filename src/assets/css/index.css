@@ -3,13 +3,13 @@
     transform: translateY(0px);
   }
   to {
-    transform: translateY(-52px);
+    transform: translateY(-62px);
   }
 }
 
 @keyframes bottomsnackbaranimationnoshow {
   from {
-    transform: translateY(-52px);
+    transform: translateY(-62px);
   }
   to {
     transform: translateY(0px);
@@ -22,13 +22,13 @@
     transform: translateY(0px);
   }
   to {
-    transform: translateY(52px);
+    transform: translateY(62px);
   }
 }
 
 @keyframes topsnackbaranimationnoshow {
   from {
-    transform: translateY(52px);
+    transform: translateY(62px);
   }
   to {
     transform: translateY(0px);
